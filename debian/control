@@ -1,0 +1,22 @@
+Source: cgal-swig-bindings
+Section: libs
+Priority: optional
+Maintainer: Thomas Karl Pietrowski <thopiekar@unknown>
+Build-Depends:
+ debhelper (>= 11),
+ cmake,
+# Python
+ python-dev,
+ python3-dev,
+# Java
+ default-jdk,
+Standards-Version: 4.1.3
+Homepage: https://github.com/thopiekar/cgal-swig-bindings-packaging
+#Vcs-Browser: https://salsa.debian.org/debian/cgal-swig-bindings
+#Vcs-Git: https://salsa.debian.org/debian/cgal-swig-bindings.git
+
+Package: cgal-swig-bindings
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
