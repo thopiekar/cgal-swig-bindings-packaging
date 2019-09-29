@@ -5,6 +5,8 @@ Maintainer: Thomas Karl Pietrowski <thopiekar@unknown>
 Build-Depends:
  debhelper (>= 11),
  cmake,
+# SWIG
+ swig,
 # Python
  python-dev,
  python3-dev,
