@@ -1,2 +1,4 @@
 # cgal-swig-bindings-packaging
-https://github.com/CGAL/cgal-swig-bindings
+
+ * Sources: https://github.com/CGAL/cgal-swig-bindings
+ * Recipe: https://code.launchpad.net/~thopiekar/+recipe/cgal-swig-bindings-daily
