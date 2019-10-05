@@ -1,0 +1,7 @@
+usr/lib/libCGAL_Kernel_cpp.so
+usr/lib/libCGAL_Triangulation_3_cpp.so
+usr/lib/libCGAL_Triangulation_2_cpp.so
+usr/lib/libCGAL_Alpha_shape_2_cpp.so
+usr/lib/libCGAL_AABB_tree_cpp.so
+usr/lib/libCGAL_Surface_mesher_cpp.so
+usr/lib/libCGAL_Mesh_3_cpp.so
