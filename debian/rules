@@ -28,40 +28,40 @@ override_dh_auto_configure:
 
 	# Python
 	for python in $(shell pyversions -r) $(shell py3versions -r); do \
-		mkdir -p build-$$python; cmake -S . -B build-$$python $(CMAKE_COMMON_FLAGS) $(CMAKE_PYTHON_FLAGS) -DPYTHON_EXECUTABLE=$$python -DPYTHON_MODULE_PATH=$(CURDIR)/debian/tmp/usr/lib/$$python/ ; \
+		mkdir -p build-$$python; cmake -S $(CURDIR) -B $(CURDIR)/build-$$python $(CMAKE_COMMON_FLAGS) $(CMAKE_PYTHON_FLAGS) -DPYTHON_EXECUTABLE=$$python -DPYTHON_MODULE_PATH=$(CURDIR)/debian/tmp/usr/lib/$$python/ ; \
 	done
 
 	# Java
 	mkdir -p build-java
-	cmake -S . -B build-java $(CMAKE_COMMON_FLAGS) $(CMAKE_JAVA_FLAGS)
+	cmake -S . -B $(CURDIR)/build-java $(CMAKE_COMMON_FLAGS) $(CMAKE_JAVA_FLAGS)
 
 	# Ruby
 	#mkdir -p build-ruby
-	#cmake -S . -B build-ruby $(CMAKE_COMMON_FLAGS) $(CMAKE_RUBY_FLAGS)
+	#cmake -S . -B $(CURDIR)/build-ruby $(CMAKE_COMMON_FLAGS) $(CMAKE_RUBY_FLAGS)
 
 override_dh_auto_build:
 	# Python
 	for python in $(shell pyversions -r) $(shell py3versions -r); do \
-		cmake --build build-$$python $(CMAKE_JOB_FLAGS); \
+		cmake --build $(CURDIR)/build-$$python $(CMAKE_JOB_FLAGS); \
 	done
 
 	# Java
-	cmake --build build-java $(CMAKE_JOB_FLAGS)
+	cmake --build $(CURDIR)/build-java $(CMAKE_JOB_FLAGS)
 
 	# Ruby
-	#cmake --build build-ruby $(CMAKE_JOB_FLAGS)
+	#cmake --build $(CURDIR)/build-ruby $(CMAKE_JOB_FLAGS)
 
 override_dh_auto_install:
 	# Python
 	for python in $(shell pyversions -r) $(shell py3versions -r); do \
-		cmake --build build-$$python --target install; \
+		cmake --build $(CURDIR)/build-$$python --target install; \
 	done
 
 	# Java
-	cmake --build build-java --target install
+	cmake --build $(CURDIR)/build-java --target install
 
 	# Ruby
-	#cmake --build build-ruby --target install
+	#cmake --build $(CURDIR)/build-ruby --target install
 
 	mv $(CURDIR)/debian/tmp/lib/* $(CURDIR)/debian/tmp/usr/lib/
 	rm -rfv $(CURDIR)/debian/tmp/lib/
