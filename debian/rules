@@ -14,6 +14,9 @@ CMAKE_RUBY_FLAGS = -DBUILD_PYTHON=OFF -DBUILD_RUBY=ON -DBUILD_JAVA=OFF
 #CMAKE_JOB_FLAGS = --parallel
 CMAKE_JOB_FLAGS = -- -j2
 
+# Using clang to build CGAL
+export CXX=clang++
+export CC=clang
 
 %:
 	dh $@ --buildsystem=cmake --with python2,python3
