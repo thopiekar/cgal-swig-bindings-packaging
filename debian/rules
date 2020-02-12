@@ -3,16 +3,34 @@
 # output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
 
+ARCH=`dpkg --print-architecture`
+
 CMAKE_COMMON_FLAGS = -DCMAKE_BUILD_TYPE=Release \
                      -DCMAKE_INSTALL_PREFIX=$(CURDIR)/debian/tmp \
                      -DLIB_INSTALL_DIR=usr/lib
-CMAKE_PYTHON_FLAGS = -DBUILD_PYTHON=ON -DBUILD_RUBY=OFF -DBUILD_JAVA=OFF
-CMAKE_JAVA_FLAGS = -DBUILD_PYTHON=OFF -DBUILD_RUBY=OFF -DBUILD_JAVA=ON
-CMAKE_RUBY_FLAGS = -DBUILD_PYTHON=OFF -DBUILD_RUBY=ON -DBUILD_JAVA=OFF
+CMAKE_PYTHON_FLAGS = -DBUILD_PYTHON=ON \
+                     -DBUILD_RUBY=OFF \
+                     -DBUILD_JAVA=OFF
+CMAKE_JAVA_FLAGS = -DBUILD_PYTHON=OFF \
+                   -DBUILD_RUBY=OFF \
+                   -DBUILD_JAVA=ON
+CMAKE_RUBY_FLAGS = -DBUILD_PYTHON=OFF \
+                   -DBUILD_RUBY=ON \
+                   -DBUILD_JAVA=OFF
 
+ifeq ($(ARCH),i386)
+CMAKE_JOB_FLAGS = -j1
+endif
+
+ifeq ($(ARCH),armhf)
+CMAKE_JOB_FLAGS = -j1
+endif
+
+ifndef CMAKE_JOB_FLAGS
 # Parallel is probably to heavy for launchpad.net
 #CMAKE_JOB_FLAGS = --parallel
 CMAKE_JOB_FLAGS = -- -j2
+endif
 
 # Using clang to build CGAL
 export CXX=clang++
