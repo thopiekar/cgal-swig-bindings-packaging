@@ -20,7 +20,7 @@ Build-Depends:
 # ruby-dev,
 # CGAL
  libcgal-dev (>= 5.0),
- libcgal-qt5-dev (>= 5.0),
+# libcgal-qt5-dev (>= 5.0),
 Standards-Version: 4.1.3
 Homepage: https://github.com/thopiekar/cgal-swig-bindings-packaging
 X-Python3-Version: >= 3.5
