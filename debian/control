@@ -5,6 +5,8 @@ Maintainer: Thomas Karl Pietrowski <thopiekar@gmail.com>
 Build-Depends:
  debhelper (>= 11),
  cmake,
+# clang
+ clang,
 # EIGEN3
  libeigen3-dev,
 # SWIG
