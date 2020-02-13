@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Thomas Karl Pietrowski <thopiekar@gmail.com>
 Build-Depends:
  debhelper (>= 11),
+ dh-python,
  cmake,
 # clang
  clang,
