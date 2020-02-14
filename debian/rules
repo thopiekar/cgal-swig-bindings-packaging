@@ -49,16 +49,16 @@ override_dh_auto_configure:
 
 	# Python
 	for python in $(shell pyversions -r) $(shell py3versions -r); do \
-		mkdir -p build-$$python; cmake -S $(CURDIR) -B $(CURDIR)/build-$$python $(CMAKE_COMMON_FLAGS) $(CMAKE_PYTHON_FLAGS) -DPYTHON_EXECUTABLE=$$python -DPYTHON_MODULE_PATH=$(CURDIR)/debian/tmp/usr/lib/$$python/ ; \
+		mkdir -p build-$$python; cmake -B $(CURDIR)/build-$$python $(CMAKE_COMMON_FLAGS) $(CMAKE_PYTHON_FLAGS) -DPYTHON_EXECUTABLE=$$python -DPYTHON_MODULE_PATH=$(CURDIR)/debian/tmp/usr/lib/$$python/ $(CURDIR) ; \
 	done
 
 	# Java
 	mkdir -p build-java
-	cmake -S . -B $(CURDIR)/build-java $(CMAKE_COMMON_FLAGS) $(CMAKE_JAVA_FLAGS)
+	cmake -B $(CURDIR)/build-java $(CMAKE_COMMON_FLAGS) $(CMAKE_JAVA_FLAGS) $(CURDIR)
 
 	# Ruby
 	#mkdir -p build-ruby
-	#cmake -S . -B $(CURDIR)/build-ruby $(CMAKE_COMMON_FLAGS) $(CMAKE_RUBY_FLAGS)
+	#cmake -B $(CURDIR)/build-ruby $(CMAKE_COMMON_FLAGS) $(CMAKE_RUBY_FLAGS) $(CURDIR)
 
 override_dh_auto_build:
 	# Python
