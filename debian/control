@@ -10,6 +10,9 @@ Build-Depends:
  clang,
 # EIGEN3
  libeigen3-dev,
+# Boost
+ libboost-all-dev,
+ libboost-iostreams-dev,
 # Intel TBB
  libtbb-dev,
 # SWIG
