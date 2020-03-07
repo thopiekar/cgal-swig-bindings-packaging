@@ -40,7 +40,7 @@ XS-Python-Version: >= 2.7
 Package: cgal-swig-bindings
 Architecture: all
 Depends:
- python-cgal,
+ python2-cgal,
  python3-cgal,
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
@@ -51,13 +51,15 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
 
-Package: python-cgal
+Package: python2-cgal
 Architecture: any
 Depends:
  libcgal-swig-common,
  ${python:Depends},
  ${shlibs:Depends},
  ${misc:Depends},
+Provides:
+ python-cgal,
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
 
