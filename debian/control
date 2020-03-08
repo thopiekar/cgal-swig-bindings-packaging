@@ -23,7 +23,7 @@ Build-Depends:
 # Java
  default-jdk,
 # Ruby
-# ruby-dev,
+ ruby-dev,
 # CGAL
  libcgal-dev (>= 5.0),
 # libcgal-qt5-dev (>= 5.0),
@@ -40,6 +40,7 @@ XS-Python-Version: >= 2.7
 Package: cgal-swig-bindings
 Architecture: all
 Depends:
+ java-cgal,
  python2-cgal,
  python3-cgal,
 Description: <insert up to 60 chars description>
@@ -59,6 +60,10 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
 Provides:
+ python-cgal,
+Replaces:
+ python-cgal,
+Conflicts:
  python-cgal,
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>
